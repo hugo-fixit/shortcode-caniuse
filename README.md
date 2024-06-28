@@ -1,4 +1,4 @@
-# CanIUse Component
+# Hugo shortcodes for CanIUse
 
 [CanIUse](https://caniuse.com/) 网站提供了各种前端技术的浏览器支持情况，本组件可以在 Hugo 中使用 `shortcode` 方式插入 CanIUse 网站的功能支持情况。
 
@@ -11,16 +11,16 @@
   [[module.imports]]
     path = "github.com/hugo-fixit/FixIt"
 + [[module.imports]]
-+   path = "github.com/hugo-fixit/component-caniuse"
++   path = "github.com/hugo-fixit/shortcode-caniuse"
 ```
 
 ## 注入 Partial
 
-通过 FixIt 主题开放的自定义块，在 `layouts/partials/custom.html` 文件将 `component-caniuse.html` 注入到 `custom-assets` 中：
+通过 FixIt 主题开放的自定义块，在 `layouts/partials/custom.html` 文件将 `shortcode-caniuse.html` 注入到 `custom-assets` 中：
 
 ```go-html-template
 {{- define "custom-assets" -}}
-  {{- partial "inject/component-caniuse.html" . -}}
+  {{- partial "inject/shortcode-caniuse.html" . -}}
 {{- end -}}
 ```
 

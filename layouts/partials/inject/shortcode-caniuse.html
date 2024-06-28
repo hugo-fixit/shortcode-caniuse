@@ -1,7 +1,7 @@
 {{- /* caniuse-embed.min.js */ -}}
 {{- if .HasShortcode "caniuse" -}}
   {{- $fingerprint := .Scratch.Get "fingerprint" -}}
-  {{- $source := resources.Get "lib/component-caniuse/caniuse-embed.min.js" -}}
+  {{- $source := resources.Get "lib/shortcode-caniuse/caniuse-embed.min.js" -}}
   {{- if hugo.IsProduction | and .Site.Params.cdn -}}
     {{- $source = "https://cdn.jsdelivr.net/gh/ireade/caniuse-embed/public/caniuse-embed.min.js" -}}
   {{- end -}}
