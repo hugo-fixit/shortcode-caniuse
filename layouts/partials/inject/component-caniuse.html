@@ -1,0 +1,7 @@
+{{- /* caniuse-embed.min.js */ -}}
+{{- $fingerprint := .Scratch.Get "fingerprint" -}}
+{{- $source := resources.Get "lib/component-caniuse/caniuse-embed.min.js" -}}
+{{- if hugo.IsProduction | and .Site.Params.cdn -}}
+  {{- $source = "https://cdn.jsdelivr.net/gh/ireade/caniuse-embed/public/caniuse-embed.min.js" -}}
+{{- end -}}
+{{- dict "Source" $source "Fingerprint" $fingerprint "Defer" true | dict "Scratch" .Scratch "Data" | partial "scratch/script.html" -}}
