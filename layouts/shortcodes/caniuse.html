@@ -1,8 +1,12 @@
-{{- /* reference https://github.com/pengzhanbo/caniuse-embed */ -}}
+{{- /* 
+  reference https://github.com/pengzhanbo/caniuse-embed
+  <feature>: Feature name
+  <past>: Show the past N versions that match the feature, range is 0 - 5, default is 2
+  <future>: Show the future N versions that match the feature, range is 0 - 3, default is 1
+*/ -}}
 {{- $feature := cond .IsNamedParams (.Get "feature") (.Get 0) -}}
-{{- $past := cond .IsNamedParams (.Get "past") (.Get 1) -}}
-{{- $future := cond .IsNamedParams (.Get "future") (.Get 2) -}}
-{{- $meta := cond .IsNamedParams (.Get "meta") (.Get 3) -}}
+{{- $past := cond .IsNamedParams (.Get "past") (.Get 1) | default 2 -}}
+{{- $future := cond .IsNamedParams (.Get "future") (.Get 2) | default 1 -}}
 
-<p class="ciu-embed" data-feature="{{ $feature }}" data-past="{{ $past }}" data-future="{{ $future }}" data-meta="{{ $meta }}"></p>
+<p class="ciu-embed" data-feature="{{ $feature }}" data-past="{{ $past }}" data-future="{{ $future }}" data-observer="true" data-theme=""></p>
 {{- /* EOF */ -}}

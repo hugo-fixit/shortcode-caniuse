@@ -1,9 +1,17 @@
-{{- /* embed.js */ -}}
 {{- if .HasShortcode "caniuse" -}}
   {{- $fingerprint := .Scratch.Get "fingerprint" -}}
+
+  {{- /* embed.js */ -}}
   {{- $source := resources.Get "lib/shortcode-caniuse/embed.js" -}}
   {{- if hugo.IsProduction | and .Site.Params.cdn -}}
     {{- $source = "https://caniuse.pengzhanbo.cn/embed.js" -}}
   {{- end -}}
   {{- dict "Source" $source "Fingerprint" $fingerprint "Attr" `type="module"` "Defer" true | dict "Scratch" .Scratch "Data" | partial "scratch/script.html" -}}
+
+  {{- /* shortcode-caniuse.min.js */ -}}
+  {{- $options := dict "targetPath" "js/shortcode-caniuse.min.js" "minify" hugo.IsProduction -}}
+  {{- if not hugo.IsProduction -}}
+    {{- $options = dict "sourceMap" "inline" | merge $options -}}
+  {{- end -}}
+  {{- dict "Source" (resources.Get "js/shortcode-caniuse.js") "Build" $options "Fingerprint" $fingerprint "Defer" true | dict "Scratch" .Scratch "Data" | partial "scratch/script.html" -}}
 {{- end -}}
