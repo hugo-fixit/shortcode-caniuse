@@ -1,19 +1,8 @@
-{{- /* reference https://caniuse.bitsofco.de/ */ -}}
+{{- /* reference https://github.com/pengzhanbo/caniuse-embed */ -}}
 {{- $feature := cond .IsNamedParams (.Get "feature") (.Get 0) -}}
+{{- $past := cond .IsNamedParams (.Get "past") (.Get 1) -}}
+{{- $future := cond .IsNamedParams (.Get "future") (.Get 2) -}}
+{{- $meta := cond .IsNamedParams (.Get "meta") (.Get 3) -}}
 
-<p
-  class="ciu_embed"
-  data-feature="{{ $feature }}"
-  data-periods="future_1,current,past_1,past_2"
-  data-accessible-colours="false"
->
-  <picture>
-    <source type="image/webp" srcset="https://caniuse.bitsofco.de/image/{{ $feature }}.webp" />
-    <source type="image/png" srcset="https://caniuse.bitsofco.de/image/{{ $feature }}.png" />
-    <img
-      src="https://caniuse.bitsofco.de/image/{{ $feature }}.jpg"
-      alt="Data on support for the {{ $feature }} feature across the major browsers from caniuse.com"
-    />
-  </picture>
-</p>
+<p class="ciu-embed" data-feature="{{ $feature }}" data-past="{{ $past }}" data-future="{{ $future }}" data-meta="{{ $meta }}"></p>
 {{- /* EOF */ -}}
