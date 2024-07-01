@@ -1,0 +1,9 @@
+@charset "utf-8";
+
+.ciu-embed:empty::after {
+  content: 'Data on support for the ' attr(data-feature) ' feature across the major browsers from caniuse.com';
+  color: var(--fi-secondary);
+  display: block;
+  text-align: center;
+  font-size: 12px;
+}

@@ -1,6 +1,12 @@
 {{- if .HasShortcode "caniuse" -}}
   {{- $fingerprint := .Scratch.Get "fingerprint" -}}
 
+  {{- /* shortcode-caniuse.min.css */ -}}
+  {{- $options := dict "Source" "css/shortcode-caniuse/index.scss" "Fingerprint" $fingerprint -}}
+  {{- $toCSS := dict "targetPath" "css/shortcode-caniuse.min.css" "enableSourceMap" true -}}
+  {{- $options = dict "Context" . "ToCSS" $toCSS | merge $options -}}
+  {{- partial "plugin/style.html" $options -}}
+
   {{- /* embed.js */ -}}
   {{- $source := resources.Get "lib/shortcode-caniuse/embed.js" -}}
   {{- if hugo.IsProduction | and .Site.Params.cdn -}}
