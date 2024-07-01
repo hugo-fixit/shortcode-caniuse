@@ -3,7 +3,7 @@
 
 name = 'shortcode-caniuse'
 license = 'MIT'
-licenselink = 'https://github.com/hugo-fixit/shortcode-caniuse'
+licenselink = 'https://github.com/hugo-fixit/shortcode-caniuse/LICENSE'
 description = '一个含有 caniuse shortcode 的 Hugo 主题组件。'
 min_version = "0.123.0"
 
