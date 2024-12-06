@@ -3,12 +3,12 @@
   <feature>: Feature name
   <past>: Show the past N versions that match the feature, range is 0 - 5, default is 2
   <future>: Show the future N versions that match the feature, range is 0 - 3, default is 1
-  <origin>: The origin of the caniuse embed data source
+  <origin>: The origin of the caniuse embed data source, default is "https://caniuse.lruihao.cn"
 */ -}}
 {{- $feature := cond .IsNamedParams (.Get "feature") (.Get 0) -}}
 {{- $past := cond .IsNamedParams (.Get "past") (.Get 1) | default 2 -}}
 {{- $future := cond .IsNamedParams (.Get "future") (.Get 2) | default 1 -}}
-{{- $origin := cond .IsNamedParams (.Get "origin") (.Get 3) | default "" -}}
+{{- $origin := cond .IsNamedParams (.Get "origin") (.Get 3) | default "https://caniuse.lruihao.cn" -}}
 
 <p class="ciu-embed" data-feature="{{ $feature }}" data-past="{{ $past }}" data-future="{{ $future }}" data-origin="{{ $origin }}" data-observer="true" data-theme=""></p>
 {{- /* EOF */ -}}
