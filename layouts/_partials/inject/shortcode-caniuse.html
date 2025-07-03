@@ -1,5 +1,5 @@
 {{- if .HasShortcode "caniuse" -}}
-  {{- $fingerprint := .Scratch.Get "fingerprint" -}}
+  {{- $fingerprint := .Site.Store.Get "fingerprint" -}}
 
   {{- /* shortcode-caniuse.min.css */ -}}
   {{- $options := dict "Source" "css/shortcode-caniuse/index.scss" "Fingerprint" $fingerprint -}}
@@ -14,12 +14,12 @@
   {{- end -}}
   {{- /* debug */ -}}
   {{/*  {{- $source = "http://localhost:4321/embed.js" -}}  */}}
-  {{- dict "Source" $source "Fingerprint" $fingerprint "Defer" true | dict "Scratch" .Scratch "Data" | partial "scratch/script.html" -}}
+  {{- dict "Source" $source "Fingerprint" $fingerprint "Defer" true | dict "Page" . "Data" | partial "store/script.html" -}}
 
   {{- /* shortcode-caniuse.min.js */ -}}
   {{- $options := dict "targetPath" "js/shortcode-caniuse.min.js" "minify" hugo.IsProduction -}}
   {{- if not hugo.IsProduction -}}
     {{- $options = dict "sourceMap" "inline" | merge $options -}}
   {{- end -}}
-  {{- dict "Source" (resources.Get "js/shortcode-caniuse.js") "Build" $options "Fingerprint" $fingerprint "Defer" true | dict "Scratch" .Scratch "Data" | partial "scratch/script.html" -}}
+  {{- dict "Source" (resources.Get "js/shortcode-caniuse.js") "Build" $options "Fingerprint" $fingerprint "Defer" true | dict "Page" . "Data" | partial "store/script.html" -}}
 {{- end -}}
