@@ -9,6 +9,7 @@
 {{- $past := cond .IsNamedParams (.Get "past") (.Get 1) | default 2 -}}
 {{- $future := cond .IsNamedParams (.Get "future") (.Get 2) | default 1 -}}
 {{- $origin := cond .IsNamedParams (.Get "origin") (.Get 3) | default "https://caniuse.lruihao.cn" -}}
+{{- $meta := delimit (collections.Shuffle (slice "0" "1" "2" "3" "4" "5" "6" "7" "8" "9" "a" "b" "c" "d" "e" "f") | first 4) "" -}}
 
-<p class="ciu-embed" data-feature="{{ $feature }}" data-past="{{ $past }}" data-future="{{ $future }}" data-origin="{{ $origin }}" data-observer="true" data-theme=""></p>
+<p class="ciu-embed" data-feature="{{ $feature }}" data-past="{{ $past }}" data-future="{{ $future }}" data-origin="{{ $origin }}" data-observer="true" data-theme="" data-meta="{{ $meta }}"></p>
 {{- /* EOF */ -}}
