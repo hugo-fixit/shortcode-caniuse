@@ -19,5 +19,5 @@ features = ['caniuse']
 
 # If the theme has a single author
 [author]
-  name = 'Lruihao'
-  homepage = 'https://lruihao.cn'
+name = 'Lruihao'
+homepage = 'https://lruihao.cn'

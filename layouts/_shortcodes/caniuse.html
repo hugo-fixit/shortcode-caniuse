@@ -1,17 +1,18 @@
 {{- /* 
   reference https://github.com/Lruihao/caniuse-embed-element
-  <feature>: Feature name
-  <past>: Show the past N versions that match the feature, range is 0 - 5, default is 2
-  <future>: Show the future N versions that match the feature, range is 0 - 3, default is 1
-  <origin>: The origin of the caniuse embed data source, default is "https://caniuse.lruihao.cn"
-  <loading>: Loading strategy for the iframe (eager or lazy), default is lazy
+  @params feature - Feature name
+  @params baseline - Whether to show the feature support baseline, default is false
+  @params past - Show the past N versions that match the feature, range is 0 - 5, default is 2
+  @params future - Show the future N versions that match the feature, range is 0 - 3, default is 1
+  @params origin - The origin of the caniuse embed data source, default is "https://caniuse.lruihao.cn"
+  @params loading - Loading strategy for the iframe (eager or lazy), default is lazy
 */ -}}
 {{- $caniuseEmbed := .Page.Param "caniuse_embed" -}}
 {{- $feature := cond .IsNamedParams (.Get "feature") (.Get 0) -}}
-{{- $past := cond .IsNamedParams (.Get "past") (.Get 1) | default $caniuseEmbed.past | default 2 -}}
-{{- $future := cond .IsNamedParams (.Get "future") (.Get 2) | default $caniuseEmbed.future | default 1 -}}
-{{- $origin := cond .IsNamedParams (.Get "origin") (.Get 3) | default $caniuseEmbed.origin | default "https://caniuse.lruihao.cn" -}}
-{{- $loading := cond .IsNamedParams (.Get "loading") (.Get 4) | default $caniuseEmbed.loading | default "lazy" -}}
-
-<caniuse-embed feature="{{ $feature }}" past="{{ $past }}" future="{{ $future }}" origin="{{ $origin }}"></caniuse-embed>
+{{- $baseline := cond .IsNamedParams (.Get "baseline") (.Get 1) | default $caniuseEmbed.baseline | default false -}}
+{{- $past := cond .IsNamedParams (.Get "past") (.Get 2) | default $caniuseEmbed.past | default 2 -}}
+{{- $future := cond .IsNamedParams (.Get "future") (.Get 3) | default $caniuseEmbed.future | default 1 -}}
+{{- $origin := cond .IsNamedParams (.Get "origin") (.Get 4) | default $caniuseEmbed.origin | default "https://caniuse.lruihao.cn" -}}
+{{- $loading := cond .IsNamedParams (.Get "loading") (.Get 5) | default $caniuseEmbed.loading | default "lazy" -}}
+<caniuse-embed feature="{{ $feature }}" past="{{ $past }}" future="{{ $future }}" origin="{{ $origin }}" loading="{{ $loading }}"{{ if $baseline }} baseline{{ end }}></caniuse-embed>
 {{- /* EOF */ -}}
