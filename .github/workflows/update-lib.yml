@@ -1,0 +1,28 @@
+name: Update caniuse-embed-element.iife.js
+
+on:
+  pull_request:
+    types:
+      - closed
+    paths:
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+
+jobs:
+  update:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Download caniuse-embed-element.iife.js
+        run: |
+          mkdir -p assets/lib/shortcode-caniuse
+          curl -sS https://cdn.jsdelivr.net/npm/@cell-x/caniuse-embed-element/dist/caniuse-embed-element.iife.js -o assets/lib/shortcode-caniuse/caniuse-embed-element.iife.js
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          branch: main
+          commit_user_name: Cell[bot]
+          commit_user_email: lrhx@users.noreply.github.com
+          commit_author: Cell[bot] <lrhx@users.noreply.github.com>
+          commit_message: 'chore: sync caniuse-embed-element assets'

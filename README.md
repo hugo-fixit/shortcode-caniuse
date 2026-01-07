@@ -2,7 +2,9 @@
 
 在 Hugo 中使用 `shortcode` 方式内嵌 [CanIUse](https://caniuse.com/) 到你的文章中。
 
-![shortcode-caniuse-preview](https://github.com/hugo-fixit/shortcode-caniuse/assets/33419593/3722adc9-0759-4f9c-b381-7f0e6e1c101b)
+![caniuse example](./preview/caniuse.webp)
+
+![baseline example](./preview/baseline.png)
 
 ## 依赖
 
