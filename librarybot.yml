@@ -1,0 +1,9 @@
+schemaVersion: 1
+baseDir: assets/lib
+libraries:
+  - npm: '@cell-x/caniuse-embed-element'
+    version: 1.2.3
+    local:
+      items:
+        - from: dist/caniuse-embed-element.iife.js
+          to: caniuse-embed-element.iife.js

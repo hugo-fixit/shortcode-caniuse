@@ -83,6 +83,7 @@ cdn = ""
 
 ## 参考
 
+- [\<caniuse-embed\> Element](https://caniuse-el.lruihao.cn/)
 - [The CanIUse Embed — Add support tables to your site](https://caniuse.lruihao.cn/)
 - [Can I use… Support tables for HTML5, CSS3, etc](https://caniuse.com/)
 
