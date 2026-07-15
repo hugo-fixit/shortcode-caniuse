@@ -1,18 +1,28 @@
 {{- if .HasShortcode "caniuse" -}}
   {{- $fingerprint := .Site.Store.Get "fingerprint" -}}
-  {{- $caniuseEmbedConfig := .Param "caniuse_embed" -}}
+  {{- $caniuseEmbedConfig := dict "Page" . "Key" "caniuse_embed" | partial "function/param.html" -}}
 
   {{- /* caniuse-embed-element.iife.js */ -}}
-  {{- $source := resources.Get "lib/shortcode-caniuse/caniuse-embed-element.iife.js" -}}
+  {{- $source := resources.Get "lib/caniuse-embed-element.iife.js" -}}
   {{- if hugo.IsProduction | and $caniuseEmbedConfig.cdn -}}
     {{- $source = $caniuseEmbedConfig.cdn -}}
   {{- end -}}
-  {{- dict "Source" $source "Fingerprint" $fingerprint "Async" true "Defer" true | dict "Page" . "Data" | partial "store/script.html" -}}
+  {{- dict
+    "Source" $source
+    "Fingerprint" $fingerprint
+    "Async" true
+    "Defer" true
+    | dict "Page" . "Data"
+    | partial "store/script.html"
+  -}}
 
-  {{- /* shortcode-caniuse.min.js */ -}}
-  {{- $options := dict "targetPath" "js/shortcode-caniuse.min.js" "minify" hugo.IsProduction -}}
-  {{- if not hugo.IsProduction -}}
-    {{- $options = dict "sourceMap" "inline" | merge $options -}}
-  {{- end -}}
-  {{- dict "Source" (resources.Get "js/shortcode-caniuse.js") "Build" $options "Fingerprint" $fingerprint "Defer" true | dict "Page" . "Data" | partial "store/script.html" -}}
+  {{- /* caniuse.fixit.min.js */ -}}
+  {{- dict
+    "Source" "js/caniuse.fixit.ts"
+    "Build" true
+    "Fingerprint" $fingerprint
+    "Defer" true
+    | dict "Page" . "Data"
+    | partial "store/script.html"
+  -}}
 {{- end -}}

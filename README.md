@@ -8,11 +8,11 @@
 
 ## 依赖
 
-FixIt 主题 `v0.4.0` 及以上版本。
+FixIt 主题 `v1.0.0` 及以上版本。
 
 ## 安装组件
 
-和 [安装主题](https://fixit.lruihao.cn/zh-cn/documentation/installation/) 一样，安装方式有多种，选择其一即可，例如通过 Hugo Modules 安装：
+和 [安装主题](https://fixit.lruihao.cn/zh-cn/docs/installation/) 一样，安装方式有多种，选择其一即可，例如通过 Hugo Modules 安装：
 
 ```toml
 [module]
@@ -31,7 +31,7 @@ path = "github.com/hugo-fixit/shortcode-caniuse"
 ```toml
 [params]
 
-[params.customPartials]
+[params.custom_partials]
 # ... other partials
 assets = [ "inject/shortcode-caniuse.html" ]
 # ... other partials
